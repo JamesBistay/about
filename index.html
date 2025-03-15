@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Beda College Alabang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2020/12/SBCA-Logo-medium-with-label-oneliner.png" alt="San Beda College Alabang Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse text-center" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Carousel -->
+    <section id="carousel">
+        <div id="bedanCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2023/11/387529884_651181200459387_116684050651397400_n.jpg" class="d-block w-100" alt="San Beda Event 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2023/11/387563144_143053045556586_1158252203729901998_n.jpg" class="d-block w-100" alt="San Beda Event 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2023/11/387572254_655831189862727_1399828506733295049_n.jpg" class="d-block w-100" alt="San Beda Event 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#bedanCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#bedanCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="section" id="our-story">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>San Beda College Alabang was established to provide quality education rooted in Benedictine values. Over the years, it has grown into a prestigious institution known for academic excellence.</p>
+        </div>
+    </section>
+
+    <section class="section" id="mission-vision">
+        <div class="container">
+            <h2>Mission & Vision</h2>
+            <p><strong>Mission:</strong> To develop individuals committed to faith, knowledge, and service.</p>
+            <p><strong>Vision:</strong> To be a leading educational institution recognized for holistic formation and academic excellence.</p>
+        </div>
+    </section>
+
+    <section class="section" id="values">
+        <div class="container">
+            <h2>Our Values</h2>
+            <p><strong>Our Values:</strong> Faith, Excellence, Service, and Discipline.</p>
+        </div>
+    </section>
+
+    <section class="section" id="why-choose-us">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <p>San Beda College Alabang stands out for its strong academic programs, dedicated faculty, and commitment to forming well-rounded individuals.</p>
+            <button class="btn btn-danger" onclick="showMessage()">Learn More</button>
+            <p id="message" style="display:none; color: #8B0000; font-weight: bold;">Join us today and experience the Bedan excellence!</p>
+        </div>
+    </section>
+
+    <!-- Embedded Video -->
+    <section class="section" id="video">
+        <div class="container">
+            <h2>Experience Bedan Life</h2>
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/ywP90CRXi5s" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 San Beda College Alabang. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

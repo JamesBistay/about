@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    background-color: #8B0000;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.ratio {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Make text and elements adjust dynamically */
+h2 {
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+@media (max-width: 375px) { /* Specific for iPhone SE */
+    .section {
+        padding: 20px 10px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+}
