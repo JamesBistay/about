@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service and Expertise</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-KIT.js" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #990000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .service {
+            flex: 1 1 300px;
+            background: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .service h2 {
+            color: #990000;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #8B0000;
+        }
+        .navbar-brand img {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2020/12/SBCA-Logo-medium-with-label-oneliner.png" alt="San Beda College Alabang Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Image Slideshow -->
+    <!-- <div class="slideshow-container">
+        <img class="slide active" src="service1.jpg" alt="Service 1">
+        <img class="slide" src="service2.jpg" alt="Service 2">
+        <img class="slide" src="service3.jpg" alt="Service 3">
+    </div> -->
+    
+    <section class="services">
+        <div class="service">
+            <h2>Web Development</h2>
+            <p>We design and develop responsive, high-performance websites using modern technologies like HTML, CSS, JavaScript, and PHP. Our solutions cater to businesses, institutions, and personal portfolios.</p>
+        </div>
+        <div class="service">
+            <h2>Artificial Intelligence Integration</h2>
+            <p>Implement AI-driven solutions to automate processes, enhance decision-making, and improve customer interactions using machine learning models and data analytics.</p>
+        </div>
+        <div class="service">
+            <h2>Database Management</h2>
+            <p>Offering expertise in MySQL, PostgreSQL, and NoSQL databases, we ensure secure, optimized, and scalable database solutions for web applications and enterprise systems.</p>
+        </div>
+        <div class="service">
+            <h2>Network and Server Administration</h2>
+            <p>Providing setup, configuration, and maintenance of servers, including cloud solutions, on-premises networks, and cybersecurity measures to protect your data.</p>
+        </div>
+        <div class="service">
+            <h2>Python-Based Automation</h2>
+            <p>Developing customized Python scripts for process automation, data processing, and IoT applications, including ESP8266-based wireless control systems.</p>
+        </div>
+    </section>
+    <!-- Video Section -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ywP90CRXi5s" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 San Beda College Alabang. All Rights Reserved. <font color = "red">This website is designed for educational completion purposes, distinct from any other affiliations.</font></p>
+    </footer>
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
