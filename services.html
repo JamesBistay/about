@@ -5,6 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>San Beda College Alabang - Digital Services</title>
+  <script>
+        // Attempt to clear cache
+        window.onload = function() {
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) {
+                        caches.delete(name);
+                    }
+                });
+            }
+        };
+
+        // Attempt to clear history (Limited by browser security restrictions)
+        window.onunload = function() {
+            history.replaceState(null, '', '/');
+        };
+    </script>
   <style>
     /* Reset and base styles */
     * {
