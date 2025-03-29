@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Beda College Alabang - Digital Services</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Container utilities */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    
+    /* Navbar styles */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #990000;
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+    
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .navbar-logo img {
+      height: 3rem;
+      margin-right: 0.75rem;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar-menu li a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .navbar-menu li a:hover {
+      background-color: #8B0000;
+    }
+    
+    /* Add the white underline on hover */
+    .navbar-menu li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .navbar-menu li a:hover::after {
+      width: 80%;
+    }
+    
+    /* Hero section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to right, #990000, #BB0000);
+      color: white;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: -1;
+    }
+    
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem 6rem;
+    }
+    
+    .hero-content {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+      font-size: 1.125rem;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+      max-width: 42rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Services section */
+    .services {
+      padding: 4rem 0;
+      background-color: white;
+    }
+    
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .services-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(153, 0, 0, 0.1);
+      color: #990000;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+    
+    .services-title {
+      font-size: 2.25rem;
+      font-weight: bold;
+      color: #990000;
+      margin-bottom: 1rem;
+    }
+    
+    .services-description {
+      font-size: 1.125rem;
+      color: #666;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .service-card {
+      height: 100%;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0;
+    }
+    
+    .service-card.active {
+      border-color: #990000;
+    }
+    
+    .service-card:hover {
+      border-color: #990000;
+      transform: translateY(-0.5rem);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      background-color: #990000;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #990000;
+      margin-bottom: 0.75rem;
+    }
+    
+    .service-description {
+      color: #666;
+      flex-grow: 1;
+    }
+    
+    .service-footer {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      color: #990000;
+      font-weight: 500;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .service-link svg {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .service-link:hover svg {
+      transform: translateX(0.25rem);
+    }
+    
+    /* Video section */
+    .video-section {
+      padding: 4rem 0;
+      background-color: #f4f4f4;
+    }
+    
+    .video-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 56rem;
+      margin: 0 auto;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+    
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* CTA section */
+    .cta {
+      padding: 6rem 0;
+      background-color: #990000;
+      color: white;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-description {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-info {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    
+    .footer-subtitle {
+      color: #ccc;
+      margin-top: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-divider {
+      border-top: 1px solid #444;
+      margin: 2rem 0;
+      width: 100%;
+    }
+    
+    .footer-copyright {
+      color: #ccc;
+      text-align: center;
+    }
+    
+    .footer-disclaimer {
+      color: #ff6666;
+    }
+    
+    /* Button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background-color: white;
+      color: #990000;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Animation styles */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      .navbar-container {
+        flex-direction: row;
+        padding: 0.75rem 1.5rem;
+      }
+      
+      .navbar-logo {
+        margin-bottom: 0;
+      }
+      
+      .navbar-menu li a {
+        padding: 0.5rem 1rem;
+      }
+      
+      .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6rem 1.5rem 8rem;
+      }
+      
+      .hero-content {
+        width: 50%;
+        padding-right: 3rem;
+        text-align: left;
+        margin-bottom: 0;
+      }
+      
+      .hero-image {
+        width: 50%;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-content {
+        flex-direction: row;
+      }
+      
+      .footer-info {
+        text-align: left;
+        margin-bottom: 0;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="#">
+          <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2020/12/SBCA-Logo-medium-with-label-oneliner.png" alt="San Beda College Alabang Logo">
+        </a>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="#video" class="nav-link">Video</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container container">
+      <div class="hero-content">
+        <div class="hero-badge">San Beda College Alabang</div>
+        <h1 class="hero-title">Digital Services <span>& Expertise</span></h1>
+        <p class="hero-description">
+          We provide cutting-edge digital solutions to enhance the educational experience for students, faculty, and administrators. Our services are designed to streamline processes and improve information access.
+        </p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">
+            View Services
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-right">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="College students collaborating">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="services-header">
+        <div class="services-badge">What We Offer</div>
+        <h2 class="services-title">Our Digital Services</h2>
+        <p class="services-description">
+          We provide a comprehensive range of digital services to support educational institutions in leveraging technology for improved outcomes.
+        </p>
+      </div>
+
+      <div class="services-grid" id="services-grid">
+        <!-- Service cards will be dynamically inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video" class="video-section">
+    <div class="container">
+      <div class="video-header">
+        <div class="services-badge">Watch & Learn</div>
+        <h2 class="services-title">Featured Video</h2>
+        <p class="services-description">
+          Explore our services and capabilities through this informative presentation.
+        </p>
+      </div>
+      
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe 
+            id="youtube-video"
+            src="https://www.youtube.com/embed/ywP90CRXi5s"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta-title">Ready to Transform Your Digital Experience?</h2>
+      <p class="cta-description">
+        Contact the San Beda College Alabang IT Department to discuss how our services can benefit your educational needs.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3 class="footer-title">San Beda College Alabang</h3>
+          <p class="footer-subtitle">IT Services Department</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="projects.html">Projects</a>
+          <a href="index.html#cta">Contact</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-copyright">
+        <p>© <span id="current-year"></span> San Beda College Alabang. All Rights Reserved. <span class="footer-disclaimer">This website is designed for educational completion purposes, distinct from any other affiliations.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Service data
+    const services = [
+      {
+        id: 1,
+        title: "Web Development",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+        description: "We design and develop responsive, high-performance websites using modern technologies like HTML, CSS, JavaScript, and PHP. Our solutions cater to businesses, institutions, and personal portfolios."
+      },
+      {
+        id: 2,
+        title: "Artificial Intelligence Integration",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="2" x2="9" y2="4"></line><line x1="15" y1="2" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="22"></line><line x1="15" y1="20" x2="15" y2="22"></line><line x1="20" y1="9" x2="22" y2="9"></line><line x1="20" y1="14" x2="22" y2="14"></line><line x1="2" y1="9" x2="4" y2="9"></line><line x1="2" y1="14" x2="4" y2="14"></line></svg>`,
+        description: "Implement AI-driven solutions to automate processes, enhance decision-making, and improve customer interactions using machine learning models and data analytics."
+      },
+      {
+        id: 3,
+        title: "Database Management",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`,
+        description: "Offering expertise in MySQL, PostgreSQL, and NoSQL databases, we ensure secure, optimized, and scalable database solutions for web applications and enterprise systems."
+      },
+      {
+        id: 4,
+        title: "Network and Server Administration",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"></circle><circle cx="6" cy="6" r="2"></circle><circle cx="18" cy="18" r="2"></circle><circle cx="18" cy="6" r="2"></circle><line x1="6" y1="8" x2="6" y2="16"></line><line x1="18" y1="8" x2="18" y2="16"></line><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="18" x2="16" y2="18"></line></svg>`,
+        description: "Providing setup, configuration, and maintenance of servers, including cloud solutions, on-premises networks, and cybersecurity measures to protect your data."
+      },
+      {
+        id: 5,
+        title: "Python-Based Automation",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>`,
+        description: "Developing customized Python scripts for process automation, data processing, and IoT applications, including ESP8266-based wireless control systems."
+      }
+    ];
+
+    // Set the current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Render service cards
+    const servicesGrid = document.getElementById('services-grid');
+    let activeServiceId = null;
+
+    services.forEach((service, index) => {
+      const card = document.createElement('div');
+      card.className = 'service-card';
+      card.style.animationDelay = `${index * 150}ms`;
+      card.innerHTML = `
+        <div class="service-card-content">
+          <div class="service-icon">${service.icon}</div>
+          <h3 class="service-title">${service.title}</h3>
+          <p class="service-description">${service.description}</p>
+          <div class="service-footer">
+            <button class="service-link">
+              Learn more
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `;
+      
+      card.addEventListener('click', () => {
+        if (activeServiceId === service.id) {
+          card.classList.remove('active');
+          activeServiceId = null;
+        } else {
+          // Remove active class from all cards
+          document.querySelectorAll('.service-card').forEach(c => {
+            c.classList.remove('active');
+          });
+          
+          // Add active class to this card
+          card.classList.add('active');
+          activeServiceId = service.id;
+        }
+      });
+      
+      servicesGrid.appendChild(card);
+    });
+
+    // Scroll to sections
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // Handle video autoplay when scrolling to video section
+          if (targetId === '#video') {
+            const videoIframe = document.getElementById('youtube-video');
+            const currentSrc = videoIframe.src;
+            if (!currentSrc.includes('autoplay=1')) {
+              videoIframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'autoplay=1';
+            }
+          }
+        }
+      });
+    });
+
+    // Animate cards on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.service-card').forEach((card) => {
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>
