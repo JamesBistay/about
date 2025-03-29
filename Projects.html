@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - San Beda College Alabang - Digital Services</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Container utilities */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Navbar styles */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #990000;
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+    
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .navbar-logo img {
+      height: 3rem;
+      margin-right: 0.75rem;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar-menu li a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .navbar-menu li a:hover {
+      background-color: #8B0000;
+    }
+    
+    /* Add the white underline on hover */
+    .navbar-menu li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .navbar-menu li a:hover::after {
+      width: 80%;
+    }
+    
+    /* Projects header */
+    .projects-header {
+      background: linear-gradient(to right, #990000, #BB0000);
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .projects-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 0;
+    }
+    
+    .projects-header-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .projects-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+    
+    .projects-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .projects-description {
+      max-width: 48rem;
+      margin: 0 auto 2rem;
+      font-size: 1.125rem;
+      opacity: 0.9;
+    }
+    
+    /* Project filters */
+    .project-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      padding: 1rem 0;
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    .filter-button {
+      background-color: transparent;
+      border: 1px solid #ccc;
+      color: #666;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-button:hover {
+      border-color: #990000;
+      color: #990000;
+    }
+    
+    .filter-button.active {
+      background-color: #990000;
+      border-color: #990000;
+      color: white;
+    }
+    
+    /* Projects grid */
+    .projects-section {
+      padding: 3rem 0;
+      background-color: white;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .project-card {
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .project-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #990000;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      z-index: 1;
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    
+    .project-client {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+    
+    .project-client-icon {
+      margin-right: 0.5rem;
+      color: #990000;
+    }
+    
+    .project-description {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 0.9375rem;
+    }
+    
+    .project-technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-technology {
+      background-color: #f1f1f1;
+      color: #666;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+    }
+    
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      color: #990000;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+    
+    .project-link svg {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-link:hover svg {
+      transform: translateX(0.25rem);
+    }
+    
+    /* Case study section */
+    .case-study-section {
+      padding: 4rem 0;
+      background-color: #f8f8f8;
+    }
+    
+    .case-study-title {
+      text-align: center;
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+      color: #990000;
+    }
+    
+    .case-study-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      padding: 0 1rem;
+    }
+    
+    .case-study {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .case-study-image {
+      width: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    
+    .case-study-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .case-study-content {
+      flex: 1;
+    }
+    
+    .case-study-heading {
+      font-size: 1.75rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .case-study-subheading {
+      font-size: 1.125rem;
+      color: #990000;
+      margin-bottom: 1.5rem;
+    }
+    
+    .case-study-text {
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .case-study-results {
+      margin-bottom: 1.5rem;
+    }
+    
+    .result-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    
+    .result-icon {
+      margin-right: 0.75rem;
+      color: #990000;
+      flex-shrink: 0;
+    }
+    
+    .case-study-actions {
+      margin-top: 2rem;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #990000;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background-color: #8B0000;
+    }
+    
+    /* CTA section */
+    .cta-section {
+      padding: 5rem 0;
+      background-color: #990000;
+      color: white;
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+    
+    .cta-heading {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-text {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background-color: white;
+      color: #990000;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-info {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    
+    .footer-subtitle {
+      color: #ccc;
+      margin-top: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-divider {
+      border-top: 1px solid #444;
+      margin: 2rem 0;
+      width: 100%;
+    }
+    
+    .footer-copyright {
+      color: #ccc;
+      text-align: center;
+    }
+    
+    .footer-disclaimer {
+      color: #ff6666;
+    }
+    
+    /* Animation styles */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      .navbar-container {
+        flex-direction: row;
+        padding: 0.75rem 1.5rem;
+      }
+      
+      .navbar-logo {
+        margin-bottom: 0;
+      }
+      
+      .navbar-menu li a {
+        padding: 0.5rem 1rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .case-study {
+        flex-direction: row;
+      }
+      
+      .case-study-image {
+        width: 45%;
+      }
+      
+      .footer-content {
+        flex-direction: row;
+      }
+      
+      .footer-info {
+        text-align: left;
+        margin-bottom: 0;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .projects-heading {
+        font-size: 3rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2020/12/SBCA-Logo-medium-with-label-oneliner.png" alt="San Beda College Alabang Logo">
+        </a>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="service.html" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="index.html#video" class="nav-link">Video</a></li>
+        <li><a href="index.html#cta" class="nav-link">Contact</a></li>
+        <li><a href="index.html#footer" class="nav-link">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projects Header -->
+  <section class="projects-header">
+    <div class="container">
+      <div class="projects-header-content">
+        <div class="projects-badge">Our Portfolio</div>
+        <h1 class="projects-heading">Featured Projects & Case Studies</h1>
+        <p class="projects-description">
+          Explore our diverse portfolio of successful digital projects that demonstrate our expertise and innovation in various industries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Filters -->
+  <div class="project-filters container">
+    <button class="filter-button active" data-filter="all">All Projects</button>
+    <button class="filter-button" data-filter="web-development">Web Development</button>
+    <button class="filter-button" data-filter="ai-integration">AI Integration</button>
+    <button class="filter-button" data-filter="database">Database</button>
+    <button class="filter-button" data-filter="network">Network & Server</button>
+    <button class="filter-button" data-filter="automation">Automation</button>
+  </div>
+
+  <!-- Projects Grid -->
+  <section class="projects-section">
+    <div class="container">
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project cards will be dynamically inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Study Section -->
+  <section class="case-study-section">
+    <div class="container">
+      <h2 class="case-study-title">Featured Case Studies</h2>
+      <div class="case-study-container">
+        <div class="case-study">
+          <div class="case-study-image">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="University Portal Redesign">
+          </div>
+          <div class="case-study-content">
+            <h3 class="case-study-heading">University Portal Redesign</h3>
+            <p class="case-study-subheading">Client: San Beda College Alabang</p>
+            <p class="case-study-text">
+              We completely rebuilt the university's student portal to improve user experience, accessibility, and performance. The project included a redesign of the interface, integration with existing database systems, and implementation of new features.
+            </p>
+            <div class="case-study-results">
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Improved page load speed by 65%</div>
+              </div>
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Reduced student support tickets by 42%</div>
+              </div>
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Increased mobile usage by 78%</div>
+              </div>
+            </div>
+            <div class="case-study-actions">
+              <a href="#" class="cta-button">View Full Case Study</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study">
+          <div class="case-study-image">
+            <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="AI-Powered Attendance System">
+          </div>
+          <div class="case-study-content">
+            <h3 class="case-study-heading">AI-Powered Attendance System</h3>
+            <p class="case-study-subheading">Client: Regional Educational Institute</p>
+            <p class="case-study-text">
+              Developed and deployed an AI-powered facial recognition system to automate student attendance tracking across multiple campuses. The solution included hardware installation, custom software development, and integration with existing student information systems.
+            </p>
+            <div class="case-study-results">
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Saved approximately 520 teaching hours per semester</div>
+              </div>
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Improved attendance accuracy to 99.7%</div>
+              </div>
+              <div class="result-item">
+                <div class="result-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>Implementation across 5 campuses within 3 months</div>
+              </div>
+            </div>
+            <div class="case-study-actions">
+              <a href="#" class="cta-button">View Full Case Study</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-heading">Ready to Start Your Project?</h2>
+        <p class="cta-text">
+          Contact us today to discuss how we can help bring your digital vision to life with our expertise in web development, AI integration, and more.
+        </p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-primary">Request a Quote</a>
+          <a href="#" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3 class="footer-title">San Beda College Alabang</h3>
+          <p class="footer-subtitle">IT Services Department</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="projects.html">Projects</a>
+          <a href="index.html#cta">Contact</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-copyright">
+        <p>© <span id="current-year"></span> San Beda College Alabang. All Rights Reserved. <span class="footer-disclaimer">This website is designed for educational completion purposes, distinct from any other affiliations.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Project data
+    const projects = [
+      {
+        id: 1,
+        title: "University Portal Redesign",
+        client: "San Beda College Alabang",
+        category: "web-development",
+        image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Redesigned and rebuilt the university's student portal with modern technologies for an improved user experience.",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        link: "#"
+      },
+      {
+        id: 2,
+        title: "AI-Powered Attendance System",
+        client: "Regional Educational Institute",
+        category: "ai-integration",
+        image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Developed a facial recognition system for automating attendance tracking across multiple campuses.",
+        technologies: ["Python", "TensorFlow", "OpenCV", "MongoDB", "Raspberry Pi"],
+        link: "#"
+      },
+      {
+        id: 3,
+        title: "Campus-Wide Network Upgrade",
+        client: "Technical College",
+        category: "network",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Upgraded and optimized campus-wide network infrastructure for improved performance and security.",
+        technologies: ["Cisco", "Networking", "Security", "VPN", "Firewall"],
+        link: "#"
+      },
+      {
+        id: 4,
+        title: "Digital Asset Management System",
+        client: "Private University",
+        category: "database",
+        image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Created a comprehensive system for managing and distributing educational digital assets.",
+        technologies: ["React", "Node.js", "PostgreSQL", "AWS S3", "Docker"],
+        link: "#"
+      },
+      {
+        id: 5,
+        title: "Library Automation System",
+        client: "City Public Library",
+        category: "automation",
+        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Implemented an automated system for book cataloging, lending, and inventory management.",
+        technologies: ["Python", "Django", "RFID", "MySQL", "Bootstrap"],
+        link: "#"
+      },
+      {
+        id: 6,
+        title: "Virtual Learning Platform",
+        client: "Educational Consortium",
+        category: "web-development",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+        description: "Developed a comprehensive e-learning platform with video conferencing and interactive course materials.",
+        technologies: ["Vue.js", "Firebase", "WebRTC", "Node.js", "MongoDB"],
+        link: "#"
+      }
+    ];
+
+    // Set the current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Render project cards
+    const projectsGrid = document.getElementById('projects-grid');
+
+    function renderProjects(category = 'all') {
+      projectsGrid.innerHTML = ''; // Clear existing projects
+      
+      const filteredProjects = category === 'all' 
+        ? projects 
+        : projects.filter(project => project.category === category);
+      
+      filteredProjects.forEach((project, index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.style.animationDelay = `${index * 150}ms`;
+        card.innerHTML = `
+          <div class="project-image">
+            <div class="project-category">${getCategoryName(project.category)}</div>
+            <img src="${project.image}" alt="${project.title}">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">${project.title}</h3>
+            <div class="project-client">
+              <div class="project-client-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              ${project.client}
+            </div>
+            <p class="project-description">${project.description}</p>
+            <div class="project-technologies">
+              ${project.technologies.map(tech => `<span class="project-technology">${tech}</span>`).join('')}
+            </div>
+            <div class="project-footer">
+              <a href="${project.link}" class="project-link">
+                View Project
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        `;
+        
+        projectsGrid.appendChild(card);
+      });
+    }
+
+    // Helper function to get readable category names
+    function getCategoryName(category) {
+      const categoryMap = {
+        'web-development': 'Web Development',
+        'ai-integration': 'AI Integration',
+        'database': 'Database',
+        'network': 'Network & Server',
+        'automation': 'Automation'
+      };
+      
+      return categoryMap[category] || category;
+    }
+
+    // Initialize projects display
+    renderProjects();
+
+    // Set up filter buttons
+    const filterButtons = document.querySelectorAll('.filter-button');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Filter projects based on category
+        const category = button.getAttribute('data-filter');
+        renderProjects(category);
+      });
+    });
+
+    // Add scroll animation for project cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.project-card').forEach((card) => {
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -28,6 +28,7 @@
       padding: 0 1rem;
     }
     
+    
     /* Navbar styles */
     .navbar {
       position: sticky;
@@ -69,10 +70,28 @@
       text-decoration: none;
       border-radius: 0.375rem;
       transition: all 0.3s ease;
+      position: relative;
     }
     
     .navbar-menu li a:hover {
       background-color: #8B0000;
+    }
+    
+    /* Add the white underline on hover */
+    .navbar-menu li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .navbar-menu li a:hover::after {
+      width: 80%;
     }
     
     /* Hero section */
@@ -520,9 +539,8 @@
       <ul class="navbar-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
         <li><a href="#video" class="nav-link">Video</a></li>
-        <li><a href="#" class="nav-link">Contact</a></li>
-        <li><a href="#" class="nav-link">Feedback</a></li>
       </ul>
     </div>
   </nav>
@@ -618,9 +636,10 @@
           <p class="footer-subtitle">IT Services Department</p>
         </div>
         <div class="footer-links">
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="projects.html">Projects</a>
+          <a href="index.html#cta">Contact</a>
           <a href="#">FAQ</a>
         </div>
       </div>
