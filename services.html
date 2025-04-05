@@ -6,22 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>San Beda College Alabang - Digital Services</title>
   <script>
-        // Attempt to clear cache
-        window.onload = function() {
-            if ('caches' in window) {
-                caches.keys().then(function(names) {
-                    for (let name of names) {
-                        caches.delete(name);
-                    }
-                });
-            }
-        };
+    // Attempt to clear cache
+    window.onload = function() {
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
+        }
+    };
 
-        // Attempt to clear history (Limited by browser security restrictions)
-        window.onunload = function() {
-            history.replaceState(null, '', '/');
-        };
-    </script>
+    // Attempt to clear history (Limited by browser security restrictions)
+    window.onunload = function() {
+        history.replaceState(null, '', '/');
+    };
+</script>
   <style>
     /* Reset and base styles */
     * {
@@ -557,6 +557,7 @@
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="careers.html" class="nav-link">Careers</a></li>
         <li><a href="#video" class="nav-link">Video</a></li>
       </ul>
     </div>

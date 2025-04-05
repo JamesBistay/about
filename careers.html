@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - San Beda College Alabang - Digital Services</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Container utilities */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Navbar styles */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #990000;
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+    
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .navbar-logo img {
+      height: 3rem;
+      margin-right: 0.75rem;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar-menu li a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .navbar-menu li a:hover {
+      background-color: #8B0000;
+    }
+    
+    /* Mobile menu toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    
+    .mobile-menu-toggle .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+    
+    /* Add the white underline on hover */
+    .navbar-menu li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .navbar-menu li a:hover::after {
+      width: 80%;
+    }
+    
+    /* Careers header */
+    .careers-header {
+      background: linear-gradient(to right, #990000, #BB0000);
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .careers-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 0;
+    }
+    
+    .careers-header-content {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .careers-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+    
+    .careers-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .careers-description {
+      max-width: 48rem;
+      margin: 0 auto 2rem;
+      font-size: 1.125rem;
+      opacity: 0.9;
+    }
+    
+    /* Company Culture Section */
+    .culture-section {
+      background-color: white;
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: #990000;
+      margin: 0.75rem auto;
+    }
+    
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .culture-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .culture-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .culture-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .culture-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .culture-card:hover .culture-image img {
+      transform: scale(1.05);
+    }
+    
+    .culture-content {
+      padding: 1.5rem;
+    }
+    
+    .culture-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      color: #990000;
+    }
+    
+    .culture-description {
+      color: #666;
+    }
+    
+    /* Benefits Section */
+    .benefits-section {
+      background-color: #f9f9f9;
+      padding: 4rem 0;
+    }
+    
+    .benefits-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .benefits-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards 0.2s;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .benefit-card {
+      display: flex;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeInLeft 0.6s ease-out forwards;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-0.25rem);
+    }
+    
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      background-color: #990000;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+    
+    .benefit-content {
+      flex-grow: 1;
+    }
+    
+    .benefit-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #990000;
+    }
+    
+    .benefit-description {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    /* Job Openings Section */
+    .jobs-section {
+      background-color: white;
+      padding: 4rem 0;
+    }
+    
+    .jobs-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards 0.3s;
+    }
+    
+    .filters-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    
+    .filter-button {
+      background-color: #f0f0f0;
+      color: #555;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+    
+    .filter-button:hover, .filter-button.active {
+      background-color: #990000;
+      color: white;
+    }
+    
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .job-card {
+      border: 1px solid #eee;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: white;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInRight 0.6s ease-out forwards;
+    }
+    
+    .job-card:hover {
+      border-color: #990000;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .job-card-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .job-title-container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .job-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #990000;
+    }
+    
+    .job-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #666;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .job-toggle-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+    
+    .job-card.expanded .job-toggle-icon {
+      transform: rotate(180deg);
+    }
+    
+    .job-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      border-top: 1px solid transparent;
+    }
+    
+    .job-card.expanded .job-details {
+      max-height: 2000px;
+      border-top-color: #eee;
+    }
+    
+    .job-details-content {
+      padding: 1.5rem;
+    }
+    
+    .job-section {
+      margin-bottom: 1.5rem;
+    }
+    
+    .job-section-title {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.75rem;
+    }
+    
+    .job-description {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    
+    .job-list {
+      list-style-type: none;
+      margin-left: 1rem;
+    }
+    
+    .job-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .job-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #990000;
+      border-radius: 50%;
+    }
+    
+    .job-apply {
+      margin-top: 1.5rem;
+      text-align: right;
+    }
+    
+    .job-apply-btn {
+      display: inline-block;
+      background-color: #990000;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .job-apply-btn:hover {
+      background-color: #8B0000;
+    }
+    
+    .job-apply-btn:active {
+      transform: translateY(1px);
+    }
+    
+    /* Application Section */
+    .application-section {
+      background-color: #f9f9f9;
+      padding: 4rem 0;
+    }
+    
+    .application-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards 0.4s;
+    }
+    
+    .application-form {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #990000;
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-file-label {
+      background-color: #f0f0f0;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .form-file-label:hover {
+      background-color: #e0e0e0;
+    }
+    
+    .form-file {
+      display: none;
+    }
+    
+    .form-submit {
+      background-color: #990000;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      justify-self: start;
+    }
+    
+    .form-submit:hover {
+      background-color: #8B0000;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-section {
+      background-color: white;
+      padding: 4rem 0;
+    }
+    
+    .testimonials-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .testimonials-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards 0.5s;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+      animation-delay: calc(0.2s * var(--delay, 1));
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      font-size: 5rem;
+      color: rgba(153, 0, 0, 0.1);
+      font-family: serif;
+      z-index: -1;
+      line-height: 1;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-0.5rem);
+    }
+    
+    .testimonial-content {
+      color: #555;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .testimonial-info {
+      flex-grow: 1;
+    }
+    
+    .testimonial-name {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .testimonial-position {
+      color: #666;
+      font-size: 0.875rem;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-info {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    
+    .footer-subtitle {
+      color: #ccc;
+      margin-top: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-divider {
+      border-top: 1px solid #444;
+      margin: 2rem 0;
+      width: 100%;
+    }
+    
+    .footer-copyright {
+      color: #ccc;
+      text-align: center;
+    }
+    
+    .footer-disclaimer {
+      color: #ff6666;
+    }
+    
+    /* Animation styles */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      .navbar-container {
+        flex-direction: row;
+        padding: 0.75rem 1.5rem;
+      }
+      
+      .navbar-logo {
+        margin-bottom: 0;
+      }
+      
+      .navbar-menu li a {
+        padding: 0.5rem 1rem;
+      }
+      
+      .culture-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .application-form {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-content {
+        flex-direction: row;
+      }
+      
+      .footer-info {
+        text-align: left;
+        margin-bottom: 0;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .careers-heading {
+        font-size: 3rem;
+      }
+      
+      .culture-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #990000;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      
+      .navbar-menu.active {
+        display: flex;
+      }
+      
+      .navbar-menu li {
+        width: 100%;
+      }
+      
+      .navbar-menu li a {
+        width: 100%;
+        padding: 1rem;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .mobile-menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .mobile-menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .mobile-menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/2020/12/SBCA-Logo-medium-with-label-oneliner.png" alt="San Beda College Alabang Logo">
+        </a>
+      </div>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="careers.html" class="nav-link">Careers</a></li>
+        <li><a href="index.html#cta" class="nav-link">Contact</a></li>
+        <li><a href="index.html#footer" class="nav-link">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Careers Header -->
+  <section class="careers-header">
+    <div class="container">
+      <div class="careers-header-content">
+        <div class="careers-badge">Join Our Team</div>
+        <h1 class="careers-heading">Grow Your Career With Us</h1>
+        <p class="careers-description">
+          Discover exciting career opportunities at San Beda College Alabang Digital Services. Join our dynamic team of innovators and tech enthusiasts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Culture Section -->
+  <section class="culture-section">
+    <div class="container">
+      <h2 class="section-title">Our Culture</h2>
+      <div class="culture-grid">
+        <div class="culture-card" style="--delay: 1">
+          <div class="culture-image">
+            <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Innovation Environment">
+          </div>
+          <div class="culture-content">
+            <h3 class="culture-title">Innovation-Driven Environment</h3>
+            <p class="culture-description">We foster creativity and innovation, encouraging team members to explore new technologies and solutions that push boundaries in the digital landscape.</p>
+          </div>
+        </div>
+        <div class="culture-card" style="--delay: 2">
+          <div class="culture-image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="Collaborative Workspace">
+          </div>
+          <div class="culture-content">
+            <h3 class="culture-title">Collaborative Workspace</h3>
+            <p class="culture-description">Our open and inclusive environment encourages cross-functional collaboration, knowledge sharing, and meaningful connections among team members.</p>
+          </div>
+        </div>
+        <div class="culture-card" style="--delay: 3">
+          <div class="culture-image">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Professional Growth">
+          </div>
+          <div class="culture-content">
+            <h3 class="culture-title">Professional Growth</h3>
+            <p class="culture-description">We invest in our team's development through continuous learning opportunities, mentorship programs, and clear career advancement paths.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="benefits-intro">
+        <h2 class="section-title">Benefits & Perks</h2>
+        <p>We believe in rewarding our team with competitive benefits and creating an environment where everyone can thrive both professionally and personally.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card" style="--delay: 1">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M4 8v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 14h.01"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Flexible Work Schedule</h3>
+            <p class="benefit-description">Enjoy work-life balance with our flexible scheduling options including remote work possibilities and adjustable hours.</p>
+          </div>
+        </div>
+        <div class="benefit-card" style="--delay: 2">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c0-4 3.01-3 3-3h14c3 0 3 1 3 3h-3a2 2 0 0 0-2 2c0 1.1.9 2 2 2h3v2c0 2.56-.32 3-3 3h-14c-2.68 0-3-.44-3-3v-2h3a2 2 0 0 0 2-2c0-1.1-.9-2-2-2H2Z"/><path d="M21 10a2 2 0 0 1 0 4"/><path d="M3 10a2 2 0 0 0 0 4"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Competitive Compensation</h3>
+            <p class="benefit-description">We offer salary packages that reflect your expertise, experience, and the value you bring to our organization.</p>
+          </div>
+        </div>
+        <div class="benefit-card" style="--delay: 3">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 10h-6.5a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 1 0 5H6"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Healthcare Coverage</h3>
+            <p class="benefit-description">Comprehensive health insurance plans for you and your family, including dental and vision coverage.</p>
+          </div>
+        </div>
+        <div class="benefit-card" style="--delay: 4">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Professional Development</h3>
+            <p class="benefit-description">Access to courses, conferences, workshops and certification programs to enhance your skills and advance your career.</p>
+          </div>
+        </div>
+        <div class="benefit-card" style="--delay: 5">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18.5a3.5 3.5 0 1 0 7 0c0-1.57.92-2.52 2.04-3.46C16.08 14.08 17 13.15 17 12c0-.94-.66-1.77-1.66-2.5H6.66C5.67 10.23 5 11.06 5 12c0 1.15.92 2.08 1.96 3.04 1.12.94 2.04 1.89 2.04 3.46v0Z"/><path d="M12 2v2"/><path d="M9 22a3 3 0 0 0 6 0"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Innovation Time</h3>
+            <p class="benefit-description">Dedicated time to work on passion projects that could contribute to our services or develop your professional interests.</p>
+          </div>
+        </div>
+        <div class="benefit-card" style="--delay: 6">
+          <div class="benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 8.71l-5.333-4.148a2.666 2.666 0 0 0-3.274 0L5.059 8.71a2.665 2.665 0 0 0-1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.2c0-.823-.38-1.6-1.03-2.105Zm-2 7.298H7m5-3v3"/></svg>
+          </div>
+          <div class="benefit-content">
+            <h3 class="benefit-title">Work-Life Balance</h3>
+            <p class="benefit-description">Generous paid time off, holiday breaks, and special leave policies to ensure you stay refreshed and motivated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Job Openings Section -->
+  <section class="jobs-section">
+    <div class="container">
+      <div class="jobs-intro">
+        <h2 class="section-title">Current Openings</h2>
+        <p>Explore our current opportunities and find a role where you can make an impact.</p>
+      </div>
+      
+      <div class="filters-container">
+        <button class="filter-button active" data-filter="all">All Departments</button>
+        <button class="filter-button" data-filter="development">Development</button>
+        <button class="filter-button" data-filter="design">Design</button>
+        <button class="filter-button" data-filter="network">Network & IT</button>
+        <button class="filter-button" data-filter="database">Database</button>
+      </div>
+      
+      <div class="jobs-list">
+        <!-- Job 1 -->
+        <div class="job-card" data-category="development">
+          <div class="job-card-header">
+            <div class="job-title-container">
+              <h3 class="job-title">Senior Web Developer</h3>
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Manila (Hybrid)
+                </div>
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Full-time
+                </div>
+              </div>
+            </div>
+            <svg class="job-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="job-details">
+            <div class="job-details-content">
+              <div class="job-section">
+                <h4 class="job-section-title">Job Description</h4>
+                <p class="job-description">We're looking for an experienced Senior Web Developer to lead our development team in creating innovative digital solutions for educational institutions. You'll be responsible for architecting and implementing complex web applications using modern technologies.</p>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Responsibilities</h4>
+                <ul class="job-list">
+                  <li>Lead the development of web applications with high-quality, maintainable code</li>
+                  <li>Collaborate with cross-functional teams to define, design, and ship new features</li>
+                  <li>Mentor junior developers and provide technical guidance to the team</li>
+                  <li>Optimize applications for maximum speed and scalability</li>
+                  <li>Implement security and data protection measures</li>
+                </ul>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                  <li>5+ years of professional web development experience</li>
+                  <li>Strong proficiency in JavaScript, HTML5, CSS3, and modern frameworks</li>
+                  <li>Experience with backend frameworks and database technologies</li>
+                  <li>Knowledge of user authentication and authorization between systems</li>
+                  <li>Understanding of CI/CD pipelines and deployment strategies</li>
+                  <li>Bachelor's degree in Computer Science or related field</li>
+                </ul>
+              </div>
+              
+              <div class="job-apply">
+                <a href="#application" class="job-apply-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Job 2 -->
+        <div class="job-card" data-category="design">
+          <div class="job-card-header">
+            <div class="job-title-container">
+              <h3 class="job-title">UI/UX Designer</h3>
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Remote (Philippines)
+                </div>
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Full-time
+                </div>
+              </div>
+            </div>
+            <svg class="job-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="job-details">
+            <div class="job-details-content">
+              <div class="job-section">
+                <h4 class="job-section-title">Job Description</h4>
+                <p class="job-description">We're seeking a creative UI/UX Designer to help us create intuitive and engaging user experiences for our educational platforms. You will work closely with product managers and developers to translate business requirements into elegant design solutions.</p>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Responsibilities</h4>
+                <ul class="job-list">
+                  <li>Create user-centered designs by understanding business requirements and user feedback</li>
+                  <li>Design wireframes, prototypes, and high-fidelity mockups</li>
+                  <li>Develop UI elements and design systems that can be implemented across multiple projects</li>
+                  <li>Conduct user research and testing to inform design decisions</li>
+                  <li>Collaborate with development team to implement designs</li>
+                </ul>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                  <li>3+ years of experience in UI/UX design for digital products</li>
+                  <li>Strong portfolio demonstrating design thinking and problem-solving</li>
+                  <li>Proficiency in design tools such as Figma, Adobe XD, or Sketch</li>
+                  <li>Understanding of accessibility standards and responsive design</li>
+                  <li>Knowledge of front-end development is a plus</li>
+                  <li>Bachelor's degree in Design, HCI, or related field</li>
+                </ul>
+              </div>
+              
+              <div class="job-apply">
+                <a href="#application" class="job-apply-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Job 3 -->
+        <div class="job-card" data-category="network">
+          <div class="job-card-header">
+            <div class="job-title-container">
+              <h3 class="job-title">Network Administrator</h3>
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Alabang
+                </div>
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Full-time
+                </div>
+              </div>
+            </div>
+            <svg class="job-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="job-details">
+            <div class="job-details-content">
+              <div class="job-section">
+                <h4 class="job-section-title">Job Description</h4>
+                <p class="job-description">We are looking for a skilled Network Administrator to manage and maintain our educational institution's network infrastructure. You will ensure the stability, security, and performance of our IT systems while supporting staff and students.</p>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Responsibilities</h4>
+                <ul class="job-list">
+                  <li>Install, configure, and maintain network equipment including routers, switches, and firewalls</li>
+                  <li>Monitor network performance and troubleshoot network issues</li>
+                  <li>Implement and maintain network security measures</li>
+                  <li>Configure and maintain cloud services and on-premise servers</li>
+                  <li>Provide technical support to users when needed</li>
+                </ul>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                  <li>3+ years of experience in network administration</li>
+                  <li>Strong knowledge of networking protocols and concepts</li>
+                  <li>Experience with network security and monitoring tools</li>
+                  <li>Familiarity with Windows Server, Linux, and virtualization technologies</li>
+                  <li>Relevant certifications (CCNA, CompTIA Network+, etc.)</li>
+                  <li>Bachelor's degree in Computer Science, IT, or related field</li>
+                </ul>
+              </div>
+              
+              <div class="job-apply">
+                <a href="#application" class="job-apply-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Job 4 -->
+        <div class="job-card" data-category="database">
+          <div class="job-card-header">
+            <div class="job-title-container">
+              <h3 class="job-title">Database Administrator</h3>
+              <div class="job-meta">
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  Hybrid (2 days onsite)
+                </div>
+                <div class="job-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Full-time
+                </div>
+              </div>
+            </div>
+            <svg class="job-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="job-details">
+            <div class="job-details-content">
+              <div class="job-section">
+                <h4 class="job-section-title">Job Description</h4>
+                <p class="job-description">We're seeking an experienced Database Administrator to manage our educational databases and ensure data integrity, security, and availability. You will be responsible for maintaining database systems that support our applications and reporting needs.</p>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Responsibilities</h4>
+                <ul class="job-list">
+                  <li>Install, configure, and maintain database management systems</li>
+                  <li>Implement backup and recovery plans to ensure data safety</li>
+                  <li>Monitor database performance and optimize queries</li>
+                  <li>Implement security measures to protect sensitive data</li>
+                  <li>Collaborate with developers to support application data needs</li>
+                </ul>
+              </div>
+              
+              <div class="job-section">
+                <h4 class="job-section-title">Requirements</h4>
+                <ul class="job-list">
+                  <li>3+ years of experience as a Database Administrator</li>
+                  <li>Strong knowledge of SQL and database management systems</li>
+                  <li>Experience with MySQL, PostgreSQL, or SQL Server</li>
+                  <li>Understanding of database security best practices</li>
+                  <li>Experience with backup and recovery procedures</li>
+                  <li>Bachelor's degree in Computer Science, IT, or related field</li>
+                </ul>
+              </div>
+              
+              <div class="job-apply">
+                <a href="#application" class="job-apply-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Section -->
+  <section id="application" class="application-section">
+    <div class="container">
+      <h2 class="section-title">Apply Now</h2>
+      <div class="application-container">
+        <form class="application-form" id="job-application">
+          <div class="form-group">
+            <label for="full-name" class="form-label">Full Name <span class="text-red-500">*</span></label>
+            <input type="text" id="full-name" name="full-name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email <span class="text-red-500">*</span></label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
+            <input type="tel" id="phone" name="phone" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="position" class="form-label">Position You're Applying For <span class="text-red-500">*</span></label>
+            <select id="position" name="position" class="form-select" required>
+              <option value="">Select a position</option>
+              <option value="Senior Web Developer">Senior Web Developer</option>
+              <option value="UI/UX Designer">UI/UX Designer</option>
+              <option value="Network Administrator">Network Administrator</option>
+              <option value="Database Administrator">Database Administrator</option>
+              <option value="other">Other / Open Application</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="message" class="form-label">Cover Letter / Introduction</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about yourself and why you're interested in this position..."></textarea>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="resume" class="form-label">Upload Resume (PDF or DOCX) <span class="text-red-500">*</span></label>
+            <label for="resume" class="form-file-label">
+              <span id="file-name">Choose file</span>
+              <input type="file" id="resume" name="resume" class="form-file" accept=".pdf,.docx" required>
+            </label>
+          </div>
+          
+          <div class="form-group full-width">
+            <button type="submit" class="form-submit">Submit Application</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-intro">
+        <h2 class="section-title">What Our Team Says</h2>
+        <p>Hear directly from our employees about their experiences working with us.</p>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonials-grid">
+          <div class="testimonial-card" style="--delay: 1">
+            <p class="testimonial-content">"Working at San Beda College Alabang Digital Services has been a transformative experience. The collaborative environment and emphasis on continuous learning has helped me grow both professionally and personally."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marco Diaz">
+              </div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Marco Diaz</div>
+                <div class="testimonial-position">Web Developer, 3 years</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card" style="--delay: 2">
+            <p class="testimonial-content">"I appreciate how the leadership team values work-life balance. The flexible schedule allows me to be productive professionally while still having time for my family and personal pursuits."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Cruz">
+              </div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Sarah Cruz</div>
+                <div class="testimonial-position">UI/UX Designer, 2 years</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card" style="--delay: 3">
+            <p class="testimonial-content">"The opportunity to work on innovative projects that directly impact educational institutions has been incredibly rewarding. I feel like my work truly makes a difference in people's lives."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Rafael Santos">
+              </div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Rafael Santos</div>
+                <div class="testimonial-position">Network Engineer, 4 years</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3 class="footer-title">San Beda College Alabang</h3>
+          <p class="footer-subtitle">IT Services Department</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="projects.html">Projects</a>
+          <a href="careers.html">Careers</a>
+          <a href="index.html#cta">Contact</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-copyright">
+        <p>© <span id="current-year"></span> San Beda College Alabang. All Rights Reserved. <span class="footer-disclaimer">This website is designed for educational completion purposes, distinct from any other affiliations.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set the current year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      navbarMenu.classList.toggle('active');
+    });
+    
+    // Job card toggle
+    const jobCards = document.querySelectorAll('.job-card');
+    
+    jobCards.forEach(card => {
+      const header = card.querySelector('.job-card-header');
+      header.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+      });
+    });
+    
+    // Job filters
+    const filterButtons = document.querySelectorAll('.filter-button');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        jobCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+            
+            // Add a small delay for animation effect
+            setTimeout(() => {
+              card.style.opacity = '1';
+            }, 100);
+          } else {
+            card.style.opacity = '0';
+            
+            // Hide after fade out
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+    
+    // File input display
+    const fileInput = document.getElementById('resume');
+    const fileNameDisplay = document.getElementById('file-name');
+    
+    fileInput.addEventListener('change', (e) => {
+      const fileName = e.target.files[0] ? e.target.files[0].name : 'Choose file';
+      fileNameDisplay.textContent = fileName;
+    });
+    
+    // Form submission handling
+    const applicationForm = document.getElementById('job-application');
+    
+    applicationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // In a real implementation, you would send this data to your server
+      // For this demo, we'll just show an alert
+      alert('Thank you for your application! We will be in touch soon.');
+      applicationForm.reset();
+      fileNameDisplay.textContent = 'Choose file';
+    });
+    
+    // Staggered animation for cards
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.benefit-card, .job-card, .testimonial-card, .culture-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.style.getPropertyValue('--delay') || 1;
+            entry.target.style.animationDelay = `${0.2 * delay}s`;
+            entry.target.style.opacity = '0';
+            entry.target.style.animation = entry.target.classList.contains('job-card') 
+              ? 'fadeInRight 0.6s ease-out forwards' 
+              : 'fadeIn 0.8s ease-out forwards';
+              
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      elements.forEach((element) => {
+        observer.observe(element);
+      });
+    }
+    
+    // Initialize animations when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      animateOnScroll();
+    });
+  </script>
+</body>
+</html>
