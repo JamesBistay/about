@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers - San Beda College Alabang - Digital Services</title>
+  <script>
+    // Attempt to clear cache
+    window.onload = function() {
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
+        }
+    };
+
+    // Attempt to clear history (Limited by browser security restrictions)
+    window.onunload = function() {
+        history.replaceState(null, '', '/');
+    };
+</script>
   <style>
     /* Reset and base styles */
     * {
@@ -1359,11 +1376,11 @@
             <p class="testimonial-content">"The opportunity to work on innovative projects that directly impact educational institutions has been incredibly rewarding. I feel like my work truly makes a difference in people's lives."</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">
-                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Rafael Santos">
+                <img src="a.jpg" alt="James Robert A. Salud">
               </div>
               <div class="testimonial-info">
-                <div class="testimonial-name">Rafael Santos</div>
-                <div class="testimonial-position">Network Engineer, 4 years</div>
+                <div class="testimonial-name">James Robert A. Salud</div>
+                <div class="testimonial-position">Web Developer, AI Specialist, Free Lancer, Network Engineer, UI/UX Designer, 20+ years</div>
               </div>
             </div>
           </div>
