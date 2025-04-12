@@ -4,25 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>San Beda College Alabang - Digital Services</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script>
-    // Attempt to clear cache
-    window.onload = function() {
-        if ('caches' in window) {
-            caches.keys().then(function(names) {
-                for (let name of names) {
-                    caches.delete(name);
-                }
-            });
-        }
-    };
-
-    // Attempt to clear history (Limited by browser security restrictions)
-    window.onunload = function() {
-        history.replaceState(null, '', '/');
-    };
-</script>
+  <title>Services - San Beda College Alabang - Digital Services</title>
   <style>
     /* Reset and base styles */
     * {
@@ -45,7 +27,6 @@
       margin: 0 auto;
       padding: 0 1rem;
     }
-    
     
     /* Navbar styles */
     .navbar {
@@ -112,36 +93,30 @@
       width: 80%;
     }
     
-    /* Hero section */
-    .hero {
-      position: relative;
-      overflow: hidden;
+    /* Services header */
+    .services-header {
       background: linear-gradient(to right, #990000, #BB0000);
       color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
     }
     
-    .hero::before {
+    .services-header::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
       background-size: 20px 20px;
-      z-index: -1;
+      z-index: 0;
     }
     
-    .hero-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 4rem 1rem 6rem;
+    .services-header-content {
+      position: relative;
+      z-index: 1;
     }
     
-    .hero-content {
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-    
-    .hero-badge {
+    .services-badge {
       display: inline-block;
       margin-bottom: 1rem;
       padding: 0.25rem 0.75rem;
@@ -151,87 +126,26 @@
       font-size: 0.875rem;
     }
     
-    .hero-title {
+    .services-heading {
       font-size: 2.5rem;
       font-weight: bold;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero-description {
-      font-size: 1.125rem;
-      opacity: 0.8;
-      margin-bottom: 2rem;
-      max-width: 42rem;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-    
-    .hero-image {
-      width: 100%;
-      max-width: 600px;
-      position: relative;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .hero-image:hover {
-      transform: scale(1.05);
-    }
-    
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-    
-    /* Services section */
-    .services {
-      padding: 4rem 0;
-      background-color: white;
-    }
-    
-    .services-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    
-    .services-badge {
-      display: inline-block;
-      margin-bottom: 1rem;
-      padding: 0.25rem 0.75rem;
-      background-color: rgba(153, 0, 0, 0.1);
-      color: #990000;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-    }
-    
-    .services-title {
-      font-size: 2.25rem;
-      font-weight: bold;
-      color: #990000;
       margin-bottom: 1rem;
     }
     
     .services-description {
-      font-size: 1.125rem;
-      color: #666;
       max-width: 48rem;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
+      font-size: 1.125rem;
+      opacity: 0.9;
     }
     
+    /* Services grid */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       gap: 2rem;
+      padding: 4rem 0;
+      background-color: white;
     }
     
     .service-card {
@@ -243,10 +157,7 @@
       transition: all 0.3s ease;
       cursor: pointer;
       opacity: 0;
-    }
-    
-    .service-card.active {
-      border-color: #990000;
+      animation: fadeIn 0.6s ease-out forwards;
     }
     
     .service-card:hover {
@@ -310,65 +221,6 @@
     
     .service-link:hover svg {
       transform: translateX(0.25rem);
-    }
-    
-    /* Video section */
-    .video-section {
-      padding: 4rem 0;
-      background-color: #f4f4f4;
-    }
-    
-    .video-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-    
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 56rem;
-      margin: 0 auto;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    }
-    
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    
-    /* CTA section */
-    .cta {
-      padding: 6rem 0;
-      background-color: #990000;
-      color: white;
-      text-align: center;
-    }
-    
-    .cta-title {
-      font-size: 2.25rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-    
-    .cta-description {
-      font-size: 1.125rem;
-      opacity: 0.9;
-      margin-bottom: 2rem;
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
     }
     
     /* Footer */
@@ -438,39 +290,6 @@
       color: #ff6666;
     }
     
-    /* Button styles */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    
-    .btn-primary {
-      background-color: white;
-      color: #990000;
-      border: none;
-    }
-    
-    .btn-primary:hover {
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      color: white;
-      border: 1px solid white;
-    }
-    
-    .btn-outline:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
     /* Animation styles */
     @keyframes fadeIn {
       from {
@@ -481,10 +300,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-    
-    .animate-fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
     }
     
     /* Responsive styles */
@@ -502,24 +317,6 @@
         padding: 0.5rem 1rem;
       }
       
-      .hero-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 6rem 1.5rem 8rem;
-      }
-      
-      .hero-content {
-        width: 50%;
-        padding-right: 3rem;
-        text-align: left;
-        margin-bottom: 0;
-      }
-      
-      .hero-image {
-        width: 50%;
-      }
-      
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -535,7 +332,7 @@
     }
     
     @media (min-width: 1024px) {
-      .hero-title {
+      .services-heading {
         font-size: 3rem;
       }
       
@@ -550,105 +347,40 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-logo">
-        <a href="#">
+        <a href="index.html">
           <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/elementor/thumbs/SBCA-Logo-medium-with-label-oneliner-red-r46ndrvahjebmequpjiq48e0xcvtfahrfzfzlinafq.png" alt="San Beda College Alabang Logo">
         </a>
       </div>
-      <ul class="hidden md:flex space-x-6">
+      <ul class="navbar-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="projects.html" class="nav-link">Projects</a></li>
-        <li><a href="careers.html" class="nav-link">Careers</a></li>
-        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
-        <li><a href="#video" class="nav-link">Video</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="index.html#video" class="nav-link">Video</a></li>
+        <li><a href="index.html#cta" class="nav-link">Contact</a></li>
+        <li><a href="index.html#footer" class="nav-link">Feedback</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container container">
-      <div class="hero-content">
-        <div class="hero-badge">San Beda College Alabang</div>
-        <h1 class="hero-title">Digital Services <span>& Expertise</span></h1>
-        <p class="hero-description">
-          We provide cutting-edge digital solutions to enhance the educational experience for students, faculty, and administrators. Our services are designed to streamline processes and improve information access.
-        </p>
-        <div class="hero-buttons">
-          <a href="#services" class="btn btn-primary">
-            View Services
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-right">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-          <a href="#" class="btn btn-outline">Contact Us</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="College students collaborating">
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">
+  <!-- Services Header -->
+  <section class="services-header">
     <div class="container">
-      <div class="services-header">
-        <div class="services-badge">What We Offer</div>
-        <h2 class="services-title">Our Digital Services</h2>
+      <div class="services-header-content">
+        <div class="services-badge">Our Offerings</div>
+        <h1 class="services-heading">Digital Services & Solutions</h1>
         <p class="services-description">
-          We provide a comprehensive range of digital services to support educational institutions in leveraging technology for improved outcomes.
+          Explore our comprehensive range of digital services designed to enhance educational experiences and streamline institutional processes.
         </p>
-      </div>
-
-      <div class="services-grid" id="services-grid">
-        <!-- Service cards will be dynamically inserted here by JavaScript -->
       </div>
     </div>
   </section>
 
-  <!-- Video Section -->
-  <section id="video" class="video-section">
-    <div class="container">
-      <div class="video-header">
-        <div class="services-badge">Watch & Learn</div>
-        <h2 class="services-title">Featured Video</h2>
-        <p class="services-description">
-          Explore our services and capabilities through this informative presentation.
-        </p>
-      </div>
-      
-      <div class="video-container">
-        <div class="video-wrapper">
-          <iframe 
-            id="youtube-video"
-            src="https://www.youtube.com/embed/ywP90CRXi5s"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta">
-    <div class="container">
-      <h2 class="cta-title">Ready to Transform Your Digital Experience?</h2>
-      <p class="cta-description">
-        Contact the San Beda College Alabang IT Department to discuss how our services can benefit your educational needs.
-      </p>
-      <div class="hero-buttons">
-        <a href="#" class="btn btn-primary">Get Started</a>
-        <a href="#" class="btn btn-outline">Learn More</a>
-      </div>
-    </div>
+  <!-- Services Grid -->
+  <section class="services-grid container" id="services-grid">
+    <!-- Service cards will be dynamically inserted here by JavaScript -->
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-info">
@@ -656,9 +388,8 @@
           <p class="footer-subtitle">IT Services Department</p>
         </div>
         <div class="footer-links">
-          <a href="index.html">Home</a>
+          <a href="#">About</a>
           <a href="services.html">Services</a>
-          <a href="projects.html">Projects</a>
           <a href="index.html#cta">Contact</a>
           <a href="#">FAQ</a>
         </div>
@@ -702,6 +433,12 @@
         title: "Python-Based Automation",
         icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>`,
         description: "Developing customized Python scripts for process automation, data processing, and IoT applications, including ESP8266-based wireless control systems."
+      },
+      {
+        id: 6,
+        title: "IT Support & Training",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>`,
+        description: "Providing comprehensive IT support, including hardware troubleshooting, software installation, and user training sessions for staff and students."
       }
     ];
 
@@ -710,7 +447,6 @@
 
     // Render service cards
     const servicesGrid = document.getElementById('services-grid');
-    let activeServiceId = null;
 
     services.forEach((service, index) => {
       const card = document.createElement('div');
@@ -733,67 +469,7 @@
         </div>
       `;
       
-      card.addEventListener('click', () => {
-        if (activeServiceId === service.id) {
-          card.classList.remove('active');
-          activeServiceId = null;
-        } else {
-          // Remove active class from all cards
-          document.querySelectorAll('.service-card').forEach(c => {
-            c.classList.remove('active');
-          });
-          
-          // Add active class to this card
-          card.classList.add('active');
-          activeServiceId = service.id;
-        }
-      });
-      
       servicesGrid.appendChild(card);
-    });
-
-    // Scroll to sections
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-          
-          // Handle video autoplay when scrolling to video section
-          if (targetId === '#video') {
-            const videoIframe = document.getElementById('youtube-video');
-            const currentSrc = videoIframe.src;
-            if (!currentSrc.includes('autoplay=1')) {
-              videoIframe.src = currentSrc + (currentSrc.includes('?') ? '&' : '?') + 'autoplay=1';
-            }
-          }
-        }
-      });
-    });
-
-    // Animate cards on scroll
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-
-      document.querySelectorAll('.service-card').forEach((card) => {
-        observer.observe(card);
-      });
     });
   </script>
 </body>
