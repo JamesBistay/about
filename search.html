@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search - San Beda College Alabang</title>
+    <meta name="description" content="Search San Beda College Alabang website" />
+    <meta name="author" content="San Beda College Alabang" />
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f8f8;
+      }
+
+      a {
+        color: #c51f30;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #9b1724;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #c51f30;
+        color: #fff;
+        padding: 20px 0;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 60px;
+        transition: transform 0.3s ease;
+      }
+
+      .logo img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Navigation Styles */
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 20px;
+        position: relative;
+      }
+
+      .nav-links a {
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 10px 0;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      .nav-links a:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+      }
+
+      .mobile-menu-toggle .bar {
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      /* Search Styles */
+      .search-section {
+        padding: 60px 0;
+        background-color: #f1f1f1;
+        min-height: calc(100vh - 330px);
+      }
+
+      .search-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .search-header {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .search-header h1 {
+        font-size: 2.5rem;
+        color: #c51f30;
+        margin-bottom: 15px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .search-form {
+        display: flex;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 50px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .search-form:hover {
+        transform: translateY(-3px);
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 15px 25px;
+        border: none;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .search-button {
+        background-color: #c51f30;
+        color: white;
+        border: none;
+        padding: 0 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .search-button:hover {
+        background-color: #9b1724;
+      }
+
+      .search-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Search Results */
+      .search-results {
+        margin-top: 30px;
+      }
+
+      .result-item {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 0.5s ease-out;
+        border-left: 4px solid #c51f30;
+      }
+
+      .result-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .result-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .result-excerpt {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .read-more {
+        display: inline-block;
+        color: #c51f30;
+        font-weight: 600;
+        padding: 5px 0;
+        font-size: 14px;
+        position: relative;
+      }
+
+      .read-more:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #c51f30;
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      .read-more:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 50px 0;
+        color: #666;
+        animation: fadeIn 1s ease-out;
+        display: none;
+      }
+
+      .no-results h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #c51f30;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: #222;
+        color: #fff;
+        padding: 50px 0 20px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h3:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 50px;
+        background-color: #c51f30;
+      }
+
+      .footer-col p {
+        margin-bottom: 15px;
+        color: #aaa;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #aaa;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #fff;
+        padding-left: 5px;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 14px;
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .header-container {
+          position: relative;
+        }
+
+        .logo img {
+          height: 50px;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: #c51f30;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          transform: translateY(-10px);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 99;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .search-form {
+          flex-direction: column;
+          border-radius: 15px;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 15px;
+          border-radius: 15px 15px 0 0;
+        }
+
+        .search-button {
+          width: 100%;
+          padding: 15px;
+          border-radius: 0 0 15px 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .search-header h1 {
+          font-size: 2rem;
+        }
+
+        .result-item {
+          padding: 15px;
+        }
+
+        .search-section {
+          padding: 40px 0;
+        }
+      }
+    </style>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="https://sanbeda-alabang.edu.ph/wp-content/uploads/elementor/thumbs/SBCA-Logo-medium-with-label-oneliner-red-r46ndrvahjebmequpjiq48e0xcvtfahrfzfzlinafq.png" 
+                 alt="San Beda College Alabang Logo">
+          </a>
+        </div>
+        <div class="mobile-menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Student Life</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <div class="container search-container">
+          <div class="search-header">
+            <h1>Search San Beda College Alabang</h1>
+            <p>Find information across our website</p>
+          </div>
+          
+          <form class="search-form" id="search-form">
+            <input 
+              type="text" 
+              class="search-input" 
+              id="search-input" 
+              placeholder="Enter keywords to search..." 
+              autocomplete="off"
+            >
+            <button type="submit" class="search-button">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Search
+            </button>
+          </form>
+
+          <div class="search-results" id="search-results"></div>
+          
+          <div class="no-results" id="no-results">
+            <h2>No Results Found</h2>
+            <p>We couldn't find any results matching your search. Try using different keywords or phrases.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-col">
+            <h3>San Beda College Alabang</h3>
+            <p>8 Don Manolo Blvd, Alabang Hills Village, Muntinlupa City, 1780 Metro Manila, Philippines</p>
+            <p>Phone: +63 (2) 8807-7403</p>
+            <p>Email: info@sanbeda-alabang.edu.ph</p>
+          </div>
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Academic Programs</a></li>
+              <li><a href="#">Admissions</a></li>
+              <li><a href="#">Campus Life</a></li>
+              <li><a href="#">News & Events</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Library</a></li>
+              <li><a href="#">Student Portal</a></li>
+              <li><a href="#">Faculty Portal</a></li>
+              <li><a href="#">Alumni</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Connect With Us</h3>
+            <ul class="footer-links">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">YouTube</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 San Beda College Alabang. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Sample search results data
+      const sampleResults = [
+        {
+          title: 'Admission Requirements for Incoming Freshmen',
+          excerpt: 'Learn about the admission requirements for incoming freshmen at San Beda College Alabang, including necessary documents, entrance exams, and important dates.',
+          url: '#'
+        },
+        {
+          title: 'College of Arts and Sciences Programs',
+          excerpt: 'Explore the undergraduate programs offered by the College of Arts and Sciences including Bachelor of Science in Psychology, Communication, and Political Science.',
+          url: '#'
+        },
+        {
+          title: 'Student Handbook and Code of Conduct',
+          excerpt: 'The official student handbook containing policies, procedures, code of conduct, and guidelines for all San Beda College Alabang students.',
+          url: '#'
+        },
+        {
+          title: 'Campus Facilities and Resources',
+          excerpt: 'Discover the state-of-the-art facilities available to students including libraries, laboratories, sports complexes, and student centers.',
+          url: '#'
+        },
+        {
+          title: 'Financial Aid and Scholarship Opportunities',
+          excerpt: 'Information about various scholarship programs, grants, and financial aid options available to qualified students.',
+          url: '#'
+        }
+      ];
+
+      // Mobile menu toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          
+          // Animate hamburger to X
+          const bars = document.querySelectorAll('.bar');
+          bars.forEach(bar => {
+            bar.classList.toggle('change');
+          });
+        });
+
+        // Handle search form submission
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const noResults = document.getElementById('no-results');
+        
+        searchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const query = searchInput.value.trim().toLowerCase();
+          
+          // Clear previous results
+          searchResults.innerHTML = '';
+          
+          if (!query) {
+            // If search is empty, show no results
+            noResults.style.display = 'block';
+            return;
+          }
+          
+          // Filter sample results based on query
+          const filteredResults = sampleResults.filter(result => 
+            result.title.toLowerCase().includes(query) || 
+            result.excerpt.toLowerCase().includes(query)
+          );
+          
+          if (filteredResults.length === 0) {
+            // If no matches, show no results message
+            noResults.style.display = 'block';
+            return;
+          }
+          
+          // Hide no results message if we have results
+          noResults.style.display = 'none';
+          
+          // Display search results
+          filteredResults.forEach((result, index) => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            resultItem.style.animationDelay = `${index * 0.1}s`;
+            
+            resultItem.innerHTML = `
+              <h3 class="result-title">${highlightText(result.title, query)}</h3>
+              <p class="result-excerpt">${highlightText(result.excerpt, query)}</p>
+              <a href="${result.url}" class="read-more">Read More</a>
+            `;
+            
+            searchResults.appendChild(resultItem);
+          });
+        });
+        
+        // Function to highlight search term in text
+        function highlightText(text, query) {
+          if (!query) return text;
+          
+          const regex = new RegExp(`(${query})`, 'gi');
+          return text.replace(regex, '<mark>$1</mark>');
+        }
+      });
+    </script>
+  </body>
+</html>
